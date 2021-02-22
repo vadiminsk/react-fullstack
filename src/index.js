@@ -16,7 +16,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header />
-        <NewsList news={news} />
+        <NewsList news={news}>
+          <h2>Children</h2>
+        </NewsList>
         <Footer footerText={footerText} />
       </React.Fragment>
     );
