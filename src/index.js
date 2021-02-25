@@ -9,14 +9,27 @@ import './style.css';
 class App extends Component {
   state = {
     news: JSON,
+    filtered: JSON,
     footerText: 'I am a footer',
   };
+
+  getKeywords = (event) => {
+    let keyword = event.target.value;
+    let filtered = this.state.news.filter((item) => {
+      return item.title.indexOf(keyword) > -1;
+    });
+
+    this.setState({
+      filtered, // filtered: filtered
+    });
+  };
+
   render() {
-    const { news, footerText } = this.state;
+    const { filtered, footerText } = this.state;
     return (
       <React.Fragment>
-        <Header />
-        <NewsList news={news}>
+        <Header keywords={this.getKeywords} />
+        <NewsList news={filtered}>
           <h2>Children</h2>
         </NewsList>
         <Footer footerText={footerText} />
