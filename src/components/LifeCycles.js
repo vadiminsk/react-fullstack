@@ -5,7 +5,7 @@ export class LifeCycles extends Component {
     super(props);
 
     this.state = {
-      active: '',
+      name: 'Vadim',
     };
     console.log('1- Constructor');
   }
@@ -23,9 +23,22 @@ export class LifeCycles extends Component {
     console.log('5');
   }
 
+  shouldComponentUpdate(nextProps, prevState) {
+    console.log('method - shouldComponentUpdate');
+    return false;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('method - componentDidUpdate');
+  }
+
   render() {
     console.log('3 - render');
-    return <div>Life cycles</div>;
+    return (
+      <div>
+        <div onClick={() => this.setState({ name: 'David' })}>Change name</div>
+      </div>
+    );
   }
 }
 
